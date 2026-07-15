@@ -1,21 +1,27 @@
-#pragma once
+// Kill.h
+#ifndef KILL_H
+#define KILL_H
+
+#include <string>
 #include "QuestSystem.h"
 
-template<class T>
+template <typename T>
 class Kill : public QuestSystem<T>
 {
-protected:
-	int sumDeath = -1;//how much NPCs needed to be dead
-	int uSlay = 0;	//how much you slay NPCs
-	int slayer = 0;
+private:
+	int sumDeath = -1;
+
 public:
-	//inicialization
-	Kill();
-	Kill(string typ, bool mainQuest, bool activeQuest, int sumDeath, int uSlay, int& slayer);
-	//destroyer
-	~Kill();
-	//complete quest full of slay the enemy
-	bool CompleteSlayer(int sumDeath, int& slayer);
+	Kill() {}; // Prázdné tělo přímo v hlavičce
+
+	// Parametrický konstruktor definovaný přímo zde:
+	Kill(std::string typ, bool mainQuest, bool activeQuest, int sumDeath, int uSlay, int &slayer);
+	~Kill() {};
+
+	bool CompleteSlayer(int sumDeath, int &slayer);
 };
 
+// TENTO ŘÁDEK MUSÍ BÝT PŘESNĚ TAKTO (před #endif):
+#include "Kill.ipp"
 
+#endif // KILL_H

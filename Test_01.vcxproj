@@ -127,7 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Delivery.cpp" />
+    <ClCompile Include="Escort.cpp" />
+    <ClCompile Include="Gather.cpp" />
+    <ClCompile Include="Kill.cpp" />
+    <ClCompile Include="QuestSystem.cpp" />
     <ClCompile Include="Test_01.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Delivery.h" />
+    <ClInclude Include="Escort.h" />
+    <ClInclude Include="Gather.h" />
+    <ClInclude Include="Kill.h" />
+    <ClInclude Include="QuestSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
