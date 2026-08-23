@@ -1,7 +1,6 @@
-#PRAGMA ONCE
+#pragma once
 #include <string>
 
-template 
 class QuestSystem
 {
 protected:

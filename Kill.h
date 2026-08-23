@@ -1,4 +1,4 @@
-#PRAGMA ONCE
+#pragma once
 
 #include <string>
 #include "QuestSystem.h"
@@ -12,10 +12,10 @@ public:
 	Kill() {}; // Prázdné tělo přímo v hlavičce
 
 	// Parametrický konstruktor definovaný přímo zde:
-	Kill(std::string typ, bool mainQuest, bool activeQuest, int sumDead, int uSlay, int &slayer) : QuestSystem<T>(typ, mainQuest, activeQuest)
+	Kill(std::string typ, bool mainQuest, bool activeQuest, int sumDead, int uSlay, int &slayer)
 	{
 		this->sumDeath = sumDead; // TEĎ už si pamatujeme, že máme zabít 10 krys![cite: 1]
-   		slayer = ++uSlay;
+		slayer = ++uSlay;
 	}
 	~Kill() {};
 

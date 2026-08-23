@@ -1,4 +1,4 @@
-#PRAGMA ONCE
+#pragma once
 #include "QuestSystem.h"
 
 class Escort : public QuestSystem

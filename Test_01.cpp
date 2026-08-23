@@ -136,8 +136,8 @@ int main()
 
     // Vytvoření tvého questu
     // (Předpokládám, že máš opravené konstruktory)
-    Kill<void> ratQuest("Zabij 10 krys nebo zammori cely svet", true, true, 10, 0, myStats);
-    QuestSystem<void> myQuest = ratQuest;
+    Kill ratQuest("Zabij 10 krys nebo zammori cely svet", true, true, 10, 0, myStats);
+    QuestSystem myQuest = ratQuest;
     myQuest.printQuestStatus();
 
     // Tady zkus zavolat nějakou metodu, která v sobě má výpis (cout)
