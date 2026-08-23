@@ -1,6 +1,4 @@
 #pragma once
-
-#include <string>
 #include "QuestSystem.h"
 
 class Kill : public QuestSystem

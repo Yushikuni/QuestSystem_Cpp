@@ -5,14 +5,14 @@ class Escort : public QuestSystem
 {
 protected:
 	bool beginTravel = false;
-	string finalDestination = "";
+	std::string finalDestination = "";
 public:
 	//inicialization
 	Escort();
-	Escort(string typ, bool mainQuest, bool activeQuest, bool beginTravel, string finalDestination);
+	Escort(std::string typ, bool mainQuest, bool activeQuest, bool beginTravel, std::string finalDestination);
 	//destroyer
 	~Escort(){};
 	//end of travel
-	bool TravelEnd(bool beginTravel,string finalDestination);
+	bool TravelEnd(bool beginTravel,std::string finalDestination);
 };
 
