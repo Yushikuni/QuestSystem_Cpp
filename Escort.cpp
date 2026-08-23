@@ -1,10 +1,6 @@
-#PRAGMA ONCE
 #include "Escort.h"
 
-Escort::Escort();
-
-
-Escort::Escort(string typ, bool mainQuest, bool activeQuest, bool beginTravel, string finalDestination)
+Escort::Escort(std::string typ, bool mainQuest, bool activeQuest, bool beginTravel, std::string finalDestination)
 {
 	this->s = typ;
 	this->mainQuest = mainQuest;
@@ -12,9 +8,10 @@ Escort::Escort(string typ, bool mainQuest, bool activeQuest, bool beginTravel, s
 	this->beginTravel = beginTravel;
 	this->finalDestination = finalDestination;
 }
-bool Escort::TravelEnd(bool beginTravel, string finalDestination)
+
+bool Escort::TravelEnd(bool beginTravel, std::string finalDestination)
 {
 	beginTravel = false;
-	cout << "You have come to the " << finalDestination << endl;
+	std::cout << "You have come to the " << finalDestination << "\n";
 	return beginTravel;
 }

@@ -7,9 +7,9 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "${workspaceFolder}/*.cpp", // Zkompiluje všechny .cpp soubory v kořenu projektu
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${workspaceFolder}\\Test_01.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"

@@ -1,6 +1,5 @@
 #include "Gather.h"
-Gather::Gather();
-Gather::Gather(string typ, bool mainQuest, bool activeQuest, string nameThing, int howMuchNeed, int howMuchHave)
+Gather::Gather(std::string typ, bool mainQuest, bool activeQuest, std::string nameThing, int howMuchNeed, int howMuchHave)
 {
 	this->s = typ;
 	this->mainQuest = mainQuest;
@@ -11,5 +10,5 @@ Gather::Gather(string typ, bool mainQuest, bool activeQuest, string nameThing, i
 }
 bool Gather::comleteGather(bool uHaveIt, int howMuchHave, int howMuchNeed)
 {
-	return(howMuchHave == howMuchNeed)
+	return (howMuchHave == howMuchNeed);
 }

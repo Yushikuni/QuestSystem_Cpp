@@ -2,9 +2,9 @@
 //
 
 #include "QuestSystem.h"
-// #include "Delivery.h"
-// #include "Escort.h"
-// #include "Gather.h"
+#include "Delivery.h"
+#include "Escort.h"
+#include "Gather.h"
 #include "Kill.h"
 
 // #include <iostream>
@@ -139,7 +139,6 @@ int main()
     Kill ratQuest("Zabij 10 krys nebo zammori cely svet", true, true, 10, 0, myStats);
     QuestSystem myQuest = ratQuest;
     myQuest.printQuestStatus();
-
     // Tady zkus zavolat nějakou metodu, která v sobě má výpis (cout)
     // Např. CompleteSlayer nebo něco podobného, co vypisuje stav.
 

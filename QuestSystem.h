@@ -15,7 +15,13 @@ public:
 	// name of quest in string 0(zero) for side quest and unactive, 1(one) for main quest line and active
 	QuestSystem(std::string typ, bool mainQuest, bool activeQuest);
 
-	void printQuestStatus();
+	// Metoda pro výpis statusu
+	virtual void printQuestStatus()
+	{
+		std::cout << "Quest Status: type, " << this->s
+				  << " | Is Main Quest? " << this->mainQuest
+				  << " | Is Active Quest? " << this->activeQuest << "\n";
+	}
 	// how to delete quest? maybee set in to default variable?
 	virtual ~QuestSystem() {};
 };
