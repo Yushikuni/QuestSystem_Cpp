@@ -1,0 +1,21 @@
+﻿  Delivery.cpp
+  Escort.cpp
+  Gather.cpp
+  Kill.cpp
+  QuestSystem.cpp
+  Test_01.cpp
+  Generating Code...
+Test_01.obj : error LNK2019: unresolved external symbol "public: __cdecl QuestSystem<void>::QuestSystem<void>(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool)" (??0?$QuestSystem@X@@QEAA@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N1@Z) referenced in function main
+Test_01.obj : error LNK2019: unresolved external symbol "public: __cdecl QuestSystem<void>::~QuestSystem<void>(void)" (??1?$QuestSystem@X@@QEAA@XZ) referenced in function "int `public: __cdecl Delivery<void>::Delivery<void>(class dtor$0 const &)'::`1'::dtor$0" (?dtor$0@?0???0?$Delivery@X@@QEAA@AEBV0@@Z@4HA)
+Test_01.obj : error LNK2019: unresolved external symbol "public: __cdecl Gather<void>::Gather<void>(void)" (??0?$Gather@X@@QEAA@XZ) referenced in function main
+Test_01.obj : error LNK2019: unresolved external symbol "public: __cdecl Gather<void>::~Gather<void>(void)" (??1?$Gather@X@@QEAA@XZ) referenced in function "public: void * __cdecl Gather<void>::`scalar deleting destructor'(unsigned int)" (??_G?$Gather@X@@QEAAPEAXI@Z)
+Test_01.obj : error LNK2019: unresolved external symbol "public: __cdecl Escort<void>::Escort<void>(void)" (??0?$Escort@X@@QEAA@XZ) referenced in function main
+Test_01.obj : error LNK2019: unresolved external symbol "public: __cdecl Escort<void>::~Escort<void>(void)" (??1?$Escort@X@@QEAA@XZ) referenced in function "public: void * __cdecl Escort<void>::`scalar deleting destructor'(unsigned int)" (??_G?$Escort@X@@QEAAPEAXI@Z)
+Test_01.obj : error LNK2019: unresolved external symbol "public: bool __cdecl Escort<void>::TravelEnd(bool,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?TravelEnd@?$Escort@X@@QEAA_N_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function main
+Test_01.obj : error LNK2019: unresolved external symbol "public: __cdecl Kill<void>::Kill<void>(void)" (??0?$Kill@X@@QEAA@XZ) referenced in function main
+Test_01.obj : error LNK2019: unresolved external symbol "public: __cdecl Kill<void>::~Kill<void>(void)" (??1?$Kill@X@@QEAA@XZ) referenced in function "public: void * __cdecl Kill<void>::`scalar deleting destructor'(unsigned int)" (??_G?$Kill@X@@QEAAPEAXI@Z)
+Test_01.obj : error LNK2019: unresolved external symbol "public: bool __cdecl Kill<void>::CompleteSlayer(int,int &)" (?CompleteSlayer@?$Kill@X@@QEAA_NHAEAH@Z) referenced in function main
+Test_01.obj : error LNK2019: unresolved external symbol "public: __cdecl Delivery<void>::Delivery<void>(void)" (??0?$Delivery@X@@QEAA@XZ) referenced in function main
+Test_01.obj : error LNK2019: unresolved external symbol "public: __cdecl Delivery<void>::~Delivery<void>(void)" (??1?$Delivery@X@@QEAA@XZ) referenced in function "public: void * __cdecl Delivery<void>::`scalar deleting destructor'(unsigned int)" (??_G?$Delivery@X@@QEAAPEAXI@Z)
+Test_01.obj : error LNK2019: unresolved external symbol "public: bool __cdecl Delivery<void>::CompleteDelivery(bool &)" (?CompleteDelivery@?$Delivery@X@@QEAA_NAEA_N@Z) referenced in function main
+C:\Users\Atlan\OneDrive\Cpp-uceni\QuestSystem_Cpp\Test_01\x64\Debug\Test_01.exe : fatal error LNK1120: 13 unresolved externals
