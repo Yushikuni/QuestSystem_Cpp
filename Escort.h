@@ -9,6 +9,7 @@ protected:
 
 public:
 	// inicialization
+	Escort() {};
 	Escort(std::string typ, bool mainQuest, bool activeQuest, bool beginTravel, std::string finalDestination);
 	// end of travel
 	bool TravelEnd(bool beginTravel, std::string finalDestination);

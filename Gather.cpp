@@ -3,12 +3,12 @@ Gather::Gather(std::string typ, bool mainQuest, bool activeQuest, std::string na
 {
 	this->s = typ;
 	this->mainQuest = mainQuest;
-	this->active = activeQuest;
+	this->activeQuest = activeQuest;
 	this->nameThing = nameThing;
 	this->howMuchNeed = howMuchNeed;
 	this->howMuchHave = howMuchHave;
 }
-bool Gather::comleteGather(bool uHaveIt, int howMuchHave, int howMuchNeed)
+bool Gather::completeGather(bool uHaveIt, int howMuchHave, int howMuchNeed)
 {
 	return (howMuchHave == howMuchNeed);
 }

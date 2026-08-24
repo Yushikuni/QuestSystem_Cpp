@@ -8,9 +8,8 @@ Delivery::Delivery(std::string typ, bool mainQuest, bool activeQuest, std::strin
 	this->nameThing = nameThing;
 	this->sthToDeliv = sthToDeliv;
 }
-Delivery::~Delivery(){}
 
-bool Delivery::CompleteDelivery(bool& sthToDeliv)
+bool Delivery::CompleteDelivery(bool &sthToDeliv)
 {
 	sthToDeliv = false;
 	std::cout << "Packet was deliver to destination " << this->nameThing << "\n";

@@ -133,14 +133,22 @@ int main()
     std::cout << "--- QUEST SYSTEM START ---" << std::endl;
 
     int myStats = 0;
-
     // Vytvoření tvého questu
     // (Předpokládám, že máš opravené konstruktory)
     Kill ratQuest("Zabij 10 krys nebo zammori cely svet", true, true, 10, 0, myStats);
-    QuestSystem myQuest = ratQuest;
-    myQuest.printQuestStatus();
+
+    ratQuest.printQuestStatus();
     // Tady zkus zavolat nějakou metodu, která v sobě má výpis (cout)
     // Např. CompleteSlayer nebo něco podobného, co vypisuje stav.
+
+    Delivery boxDelivery("Dones 10 krysich hlav do mesta", true, true, "Krysi hlavy", true);
+    boxDelivery.printQuestStatus();
+
+    Escort escorta("test escorta", true, true, true, "Hlavni Mesto ratata");
+    escorta.printQuestStatus();
+
+    Gather herbs("Dej mi 10 kyticek", true, true, "hermanek", 10, 9);
+    herbs.printQuestStatus();
 
     std::cout << "\n--- KONEC PROGRAMU ---" << std::endl;
 

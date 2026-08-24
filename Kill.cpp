@@ -6,6 +6,7 @@ Kill::Kill(std::string typ, bool mainQuest, bool activeQuest, int sumDead, int u
 	this->mainQuest = mainQuest;
 	this->activeQuest = activeQuest;
 	slayer = ++uSlay;
+	this->sumDeath = sumDead;
 }
 
 bool Kill::CompleteSlayer(int sumDeath, int &slayer)

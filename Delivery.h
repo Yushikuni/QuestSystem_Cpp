@@ -9,10 +9,10 @@ protected:
 
 public:
 	// inicialization
-	Delivery();
+	Delivery() {};
 	Delivery(std::string typ, bool mainQuest, bool activeQuest, std::string nameThing, bool sthToDeliv);
 	// destroy
-	~Delivery();
+	~Delivery() {};
 	// delivery complete
 	bool CompleteDelivery(bool &sthToDeliv);
 };

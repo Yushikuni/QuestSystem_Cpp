@@ -11,7 +11,7 @@ Escort::Escort(std::string typ, bool mainQuest, bool activeQuest, bool beginTrav
 
 bool Escort::TravelEnd(bool beginTravel, std::string finalDestination)
 {
-	beginTravel = false;
+	this->beginTravel = false;
 	std::cout << "You have come to the " << finalDestination << "\n";
 	return beginTravel;
 }
