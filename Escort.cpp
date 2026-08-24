@@ -13,5 +13,5 @@ bool Escort::TravelEnd(bool beginTravel, std::string finalDestination)
 {
 	this->beginTravel = false;
 	std::cout << "You have come to the " << finalDestination << "\n";
-	return beginTravel;
+	return this->beginTravel;
 }
