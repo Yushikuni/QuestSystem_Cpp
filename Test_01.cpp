@@ -1,11 +1,6 @@
 ﻿// Test_01.cpp : Tento soubor obsahuje funkci main. Provádění programu se tam zahajuje a ukončuje.
 //
-
-#include "QuestSystem.h"
-#include "Delivery.h"
-#include "Escort.h"
-#include "Gather.h"
-#include "Kill.h"
+#include "QuestLoader.h"
 
 // #include <iostream>
 /*
@@ -124,15 +119,9 @@ int main()
          cout << "Wolf come after you and ..." << endl;
          destroyerQuestSystem(qs, gath, escanor, kill, deliv);
          youDied(choice);
-     }*/
+     }
 
-    // Kompilátor vidí jak deklaraci z .h, tak tělo z .ipp,
-    // takže bez problému vygeneruje správný kód pro <void>!
-
-    // Malý testovací výpis, abychom viděli, že program vůbec žije
-    std::cout << "--- QUEST SYSTEM START ---" << std::endl;
-
-    int myStats = 0;
+       int myStats = 0;
     // Vytvoření tvého questu
     // (Předpokládám, že máš opravené konstruktory)
     Kill ratQuest("Zabij 10 krys nebo zammori cely svet", true, true, 10, 0, myStats);
@@ -149,6 +138,19 @@ int main()
 
     Gather herbs("Dej mi 10 kyticek", true, true, "hermanek", 10, 9);
     herbs.printQuestStatus();
+     */
+
+    // Kompilátor vidí jak deklaraci z .h, tak tělo z .ipp,
+    // takže bez problému vygeneruje správný kód pro <void>!
+
+    // Malý testovací výpis, abychom viděli, že program vůbec žije
+    std::cout << "--- QUEST SYSTEM START ---" << std::endl;
+
+    auto quests = QuestLoader::LoadFromCSV("quests.csv");
+    for (const auto &q : quests)
+    {
+        q->printQuestStatus();
+    }
 
     std::cout << "\n--- KONEC PROGRAMU ---" << std::endl;
 
