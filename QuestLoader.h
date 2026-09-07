@@ -16,7 +16,6 @@ class QuestLoader
 public:
     static std::vector<std::unique_ptr<QuestSystem>> LoadFromCSV(const std::string &path);
 
-private:
     static std::vector<std::string> SplitCSVLine(const std::string &line, char delim);
     static std::unique_ptr<QuestSystem> CreateQuestFromTokens(const std::vector<std::string> &tokens);
 };

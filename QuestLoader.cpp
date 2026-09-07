@@ -50,13 +50,20 @@ std::unique_ptr<QuestSystem> QuestLoader::CreateQuestFromTokens(const std::vecto
     }
     if (tokens[0] == "kill")
     {
-        bool mainQuest = (tokens[2] == "1");
-        bool activeQuest = (tokens[3] == "1");
-        int sumDead = std::stoi(tokens[4]);
-        // TODO smazat
-        int placeholderSlayer = 0;
-        // ... vytvoř a vrať Kill objekt
-        return std::make_unique<Kill>(tokens[1], mainQuest, activeQuest, sumDead, 0, placeholderSlayer);
+        if (tokens.size() < 5)
+            return nullptr;
+        try
+        {
+            bool mainQuest = (tokens[2] == "1");
+            bool activeQuest = (tokens[3] == "1");
+            int sumDead = std::stoi(tokens[4]);
+            int placeholderSlayer = 0;
+            return std::make_unique<Kill>(tokens[1], mainQuest, activeQuest, sumDead, 0, placeholderSlayer);
+        }
+        catch (const std::invalid_argument &)
+        {
+            return nullptr;
+        }
     }
     if (tokens[0] == "escort")
     {
@@ -78,13 +85,22 @@ std::unique_ptr<QuestSystem> QuestLoader::CreateQuestFromTokens(const std::vecto
     }
     if (tokens[0] == "gather")
     {
-        bool mainQuest = (tokens[2] == "1");
-        bool activeQuest = (tokens[3] == "1");
-        int howMuchNeed = std::stoi(tokens[5]);
-        // todo Upravit - jde to na dluh!
-        int howMuchHave = std::stoi(tokens[6]);
+        if (tokens.size() < 5)
+            return nullptr;
+        try
+        {
+            bool mainQuest = (tokens[2] == "1");
+            bool activeQuest = (tokens[3] == "1");
+            int howMuchNeed = std::stoi(tokens[5]);
+            // todo Upravit - jde to na dluh!
+            int howMuchHave = std::stoi(tokens[6]);
 
-        return std::make_unique<Gather>(tokens[1], mainQuest, activeQuest, tokens[4], howMuchNeed, howMuchHave);
+            return std::make_unique<Gather>(tokens[1], mainQuest, activeQuest, tokens[4], howMuchNeed, howMuchHave);
+        }
+        catch (const std::invalid_argument &)
+        {
+            return nullptr;
+        }
     }
     return nullptr;
 }

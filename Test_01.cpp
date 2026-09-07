@@ -1,165 +1,58 @@
 ﻿// Test_01.cpp : Tento soubor obsahuje funkci main. Provádění programu se tam zahajuje a ukončuje.
 //
+#include <cassert>
+#include <WinNls.h>
+#include <consoleapi2.h>
 #include "QuestLoader.h"
 
-// #include <iostream>
-/*
-//die funcion
-void youDied(char& choice)
+void TestCreateQuestFromTokens()
 {
-    cout << "You died omegaLUL" << endl;
-    cout << "Do you wanna play again?";
-    cin >> choice;
-    putchar(toupper(choice));
+    // test 1: prázdný vektor tokenů
+    auto result1 = QuestLoader::CreateQuestFromTokens({});
+    assert(result1 == nullptr);
 
-}
-//set to begin play
-void eventBeginPlay(char& choice)
-{
+    // test 2: neznámý typ
+    auto result2 = QuestLoader::CreateQuestFromTokens({"inihalition", "Znic Vesnici", "1", "1", "1"});
+    assert(result2 == nullptr);
 
-    cout << "Event has begin..." << endl;
-    cout << "You woke up in Forest, meet the wolf:'follow me to the field...\nwhat do you do? (Y-follow/N-do not follow): ";
-    cin >> choice;
-    putchar(toupper(choice));
+    // test 3: moc krátký řádek pro "escort"
+    auto result3 = QuestLoader::CreateQuestFromTokens({"escort", "Doprovoď pana do hospody", "0", "1"});
+    assert(result3 == nullptr);
+    // test 4: moc krátký kill quest:
+    auto result4 = QuestLoader::CreateQuestFromTokens({"kill", "zabij", ""});
+    assert(result4 == nullptr);
+    // test 4: špatný kill quest:
+    auto resultX = QuestLoader::CreateQuestFromTokens({"kill", "zabij", "", "", ""});
+    assert(resultX == nullptr);
+
+    // test 5: moc ktrátké delivery quest:
+    auto result5 = QuestLoader::CreateQuestFromTokens({"delivery", "donáška pizzy", "", "", ""});
+    assert(result5 == nullptr);
+    // test 6: moc ktrátky gather quest:
+    auto result6 = QuestLoader::CreateQuestFromTokens({"gather", "sezbírej mi....", "1", "1", "", "", ""});
+    assert(result6 == nullptr);
+
+    std::cout << "Vsechny testy prosly!\n";
 }
-// destoying QS
-void destroyerQuestSystem(QuestSystem<void> qs, Gather<void> gath, Escort<void> escanor, Kill<void> kill, Delivery<void> deliv)
-{
-    qs.~QuestSystem();
-    gath.~Gather();
-    escanor.~Escort();
-    kill.~Kill();
-    deliv.~Delivery();
-}*/
+
 int main()
 {
-    // init
-    /* bool mainQuest = true;
-     bool activeQuest = true;
-     char choice = ' ';
-     int sumDeath = 1;
-     int& slyer = sumDeath;
-     bool delivery = false;
-     bool& smthDeliver = delivery;
-     bool travel = false;
-     string typ = "TEST";
+    SetConsoleOutputCP(CP_UTF8);
 
-     QuestSystem<void> qs = QuestSystem<void>(typ, mainQuest, activeQuest);
-     Gather<void> gath;
-     Escort<void> escanor;
-     Kill<void> kill;
-     Delivery<void> deliv;
+    TestCreateQuestFromTokens();
+    /*  // Malý testovací výpis, abychom viděli, že program vůbec žije
+      std::cout << "--- QUEST SYSTEM START ---" << std::endl;
 
-     eventBeginPlay(choice);
+      auto quests = QuestLoader::LoadFromCSV("quests.csv");
+      for (const auto &q : quests)
+      {
+          q->printQuestStatus();
+      }
 
-     if (choice == 'Y')
-     {
-         cout << "Wolf run in front of you. You are come to the field...'Could You collect the rosies? \n";
-         cout << "If you do, I will speak at the guard to get audience with the king, then he will fulfill any wish'\nWhat will you do? (Y-Collect rossies/N-go for the walk):";
-         cin >> choice;
-         putchar(toupper(choice));
-         //esord function
-         travel = true;
-         if (choice == 'Y')
-         {
-             cout << "You see some rocks and downy crab spider what will you do?(Y-Take a rock and kill the monster/N-Run back to the wolf) ";
-             cin >> choice;
-             putchar(toupper(choice));
-             //kill function delivery function
-             if (choice == 'Y')
-             {
-                 cout << "You kill a monster and you took a gold locket from it" << endl;
-                 kill.CompleteSlayer(sumDeath, slyer);
-                 cout << "'I see you have rossies and you find princess gold medallion, how brave are you'\nFollow the path and may fortune accompany you..\n";
-                 cout << "You came to a dilapidated shack, do you want to sleep? (Y-hell yes/N-nope)";
-                 cin >> choice;
-                 putchar(toupper(choice));
-                 if (choice == 'Y')
-                 {
-                     cout << "It is a beatiful day and you woke up by heavy pinch in the back....\n";
-                     cout << "'Wake up we have to visit king hurry' said knight in shiny armor\n You run with him...\n Guards saluted and knight said, you are with him...\n";
-                     cout << "'You have an audience with king' said, now the king come.\nThe knight told him everything you did..." << endl;
-                     cout << "The king suddenly he glares at you and knight said:'You have to hand over flowers and locket now'. What will you do? (Y-You do/N-You do not)";
-                     cin >> choice;
-                     putchar(toupper(choice));
-                     if (choice == 'Y')
-                     {
-                         cout << "'Princess will be pleased'said...\nNow the king awakens you by shaking with you..\n END GAME LULW" << endl;
-                         travel = false;
-                         deliv.CompleteDelivery(smthDeliver);
-                         escanor.TravelEnd(travel, "Home");
-                         destroyerQuestSystem(qs, gath, escanor, kill, deliv);
-                     }
-                     else
-                     {
-                         youDied(choice);
-                         destroyerQuestSystem(qs, gath, escanor, kill, deliv);
-                     }
-                 }
-                 else
-                 {
-                     youDied(choice);
-                     destroyerQuestSystem(qs, gath, escanor, kill, deliv);
-                 }
-             }
-             else
-             {
-                 youDied(choice);
-                 destroyerQuestSystem(qs, gath, escanor, kill, deliv);
-             }
-         }
-         else
-         {
-             youDied(choice);
-             destroyerQuestSystem(qs, gath, escanor, kill, deliv);
-         }
-     }
-     else
-     {
-         cout << "Wolf come after you and ..." << endl;
-         destroyerQuestSystem(qs, gath, escanor, kill, deliv);
-         youDied(choice);
-     }
+      std::cout << "\n--- KONEC PROGRAMU ---" << std::endl;
 
-       int myStats = 0;
-    // Vytvoření tvého questu
-    // (Předpokládám, že máš opravené konstruktory)
-    Kill ratQuest("Zabij 10 krys nebo zammori cely svet", true, true, 10, 0, myStats);
-
-    ratQuest.printQuestStatus();
-    // Tady zkus zavolat nějakou metodu, která v sobě má výpis (cout)
-    // Např. CompleteSlayer nebo něco podobného, co vypisuje stav.
-
-    Delivery boxDelivery("Dones 10 krysich hlav do mesta", true, true, "Krysi hlavy", true);
-    boxDelivery.printQuestStatus();
-
-    Escort escorta("test escorta", true, true, true, "Hlavni Mesto ratata");
-    escorta.printQuestStatus();
-
-    Gather herbs("Dej mi 10 kyticek", true, true, "hermanek", 10, 9);
-    herbs.printQuestStatus();
-     */
-
-    // Kompilátor vidí jak deklaraci z .h, tak tělo z .ipp,
-    // takže bez problému vygeneruje správný kód pro <void>!
-
-    // Malý testovací výpis, abychom viděli, že program vůbec žije
-    std::cout << "--- QUEST SYSTEM START ---" << std::endl;
-
-    auto quests = QuestLoader::LoadFromCSV("quests.csv");
-    for (const auto &q : quests)
-    {
-        q->printQuestStatus();
-    }
-
-    std::cout << "\n--- KONEC PROGRAMU ---" << std::endl;
-
-    // Tento řádek donutí konzoli počkat na stisknutí klávesy, než se zavře
-    std::cin.get();
-
+      // Tento řádek donutí konzoli počkat na stisknutí klávesy, než se zavře
+      std::cin.get();
+  */
     return 0;
-
-    // QuestSystem<void> myQuest("Kill 10 Rats", true, true);
-    // myQuest.printQuestStatus();
-    // return 0;
 }
