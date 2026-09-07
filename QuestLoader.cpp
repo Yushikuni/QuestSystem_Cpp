@@ -43,7 +43,6 @@ std::unique_ptr<QuestSystem> QuestLoader::CreateQuestFromTokens(const std::vecto
     {
         std::cerr << "  tokens[" << i << "] = '" << tokens[i] << "'\n";
     }
-
     if (tokens.empty() || tokens.size() < 5)
     {
         return nullptr;
@@ -78,14 +77,23 @@ std::unique_ptr<QuestSystem> QuestLoader::CreateQuestFromTokens(const std::vecto
     }
     if (tokens[0] == "delivery")
     {
-        bool mainQuest = (tokens[2] == "1");
-        bool activeQuest = (tokens[3] == "1");
-        bool somethingToDeliver = (tokens[5] == "1");
-        return std::make_unique<Delivery>(tokens[1], mainQuest, activeQuest, tokens[4], somethingToDeliver);
+        if (tokens.size() < 6)
+            return nullptr;
+        try
+        {
+            bool mainQuest = (tokens[2] == "1");
+            bool activeQuest = (tokens[3] == "1");
+            bool somethingToDeliver = (tokens[5] == "1");
+            return std::make_unique<Delivery>(tokens[1], mainQuest, activeQuest, tokens[4], somethingToDeliver);
+        }
+        catch (const std::invalid_argument &)
+        {
+            return nullptr;
+        }
     }
     if (tokens[0] == "gather")
     {
-        if (tokens.size() < 5)
+        if (tokens.size() < 7)
             return nullptr;
         try
         {
