@@ -10,9 +10,10 @@ protected:
 public:
 	// inicializacition
 	Gather() {};
-	Gather(std::string typ, bool mainQuest, bool activeQuest, std::string nameThing, int howMuchNeed, int howMuchHave);
+	Gather(std::string typ, bool mainQuest, bool activeQuest, std::string nameThing, int howMuchNeed);
+
 	// destroyer
 	~Gather() {};
 	// sum of something
-	bool completeGather(bool uHaveIt, int howMuchHave, int howMuchNeed);
+	bool completeGather(bool howMuchDoYouHave, int howMuchNeed);
 };

@@ -8,6 +8,7 @@ protected:
 	std::string s;
 	bool mainQuest = false;
 	bool activeQuest = false;
+	bool completed = false;
 
 public:
 	// inicialization with two metods, for E0291 solved problem, add QusetSystem();
@@ -20,8 +21,8 @@ public:
 	{
 		std::cout << "Quest Status: type, " << this->s
 				  << " | Is Main Quest? " << this->mainQuest
-				  << " | Is Active Quest? " << this->activeQuest << "\n";
+				  << " | Is Active Quest? " << this->activeQuest
+				  << " | Is Complete? " << this->completed << "\n";
 	}
-	// how to delete quest? maybee set in to default variable?
 	virtual ~QuestSystem() {};
 };

@@ -1,15 +1,14 @@
 #include "Kill.h"
 
-Kill::Kill(std::string typ, bool mainQuest, bool activeQuest, int sumDead, int uSlay, int &slayer) : QuestSystem(typ, mainQuest, activeQuest)
+Kill::Kill(std::string typ, bool mainQuest, bool activeQuest, int sumDeath) : QuestSystem(typ, mainQuest, activeQuest)
 {
 	this->s = typ;
 	this->mainQuest = mainQuest;
 	this->activeQuest = activeQuest;
-	slayer += +uSlay;
-	this->sumDeath = sumDead;
+	this->sumDeath = sumDeath;
 }
 
-bool Kill::CompleteSlayer(int sumDeath, int &slayer)
+bool Kill::CompleteSlayer(int sumDeath)
 {
-	return (slayer == sumDeath);
+	return true;
 }

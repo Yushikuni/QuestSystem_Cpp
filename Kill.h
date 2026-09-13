@@ -3,15 +3,15 @@
 
 class Kill : public QuestSystem
 {
-private:
-	int sumDeath = -1;
+protected:
+	int sumDeath;
 
 public:
 	Kill() {}; // Prázdné tělo přímo v hlavičce
 
 	// Parametrický konstruktor definovaný přímo zde:
-	Kill(std::string typ, bool mainQuest, bool activeQuest, int sumDead, int uSlay, int &slayer);
+	Kill(std::string typ, bool mainQuest, bool activeQuest, int sumDead);
 	~Kill() {};
 
-	bool CompleteSlayer(int sumDeath, int &slayer);
+	bool CompleteSlayer(int sumDeath);
 };
