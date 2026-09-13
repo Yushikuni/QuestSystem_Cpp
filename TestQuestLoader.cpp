@@ -23,6 +23,21 @@ void TestGatherPrintsCorrectName()
     assert(output.find("Sesbirej byliny") != std::string::npos);
 }
 
+void TestKillCompletion()
+{
+    Kill quest("Zabij krysy", true, true, 3); // requiredKills = 3
+
+    assert(quest.IsCompleted() == false); // na začátku není hotovo
+
+    quest.AddKill();
+    quest.AddKill();
+    assert(quest.CompleteSlayer() == false); // 2 z 3, ještě ne
+
+    quest.AddKill();
+    assert(quest.CompleteSlayer() == true); // 3 z 3, hotovo
+    assert(quest.IsCompleted() == true);    // a base flag to potvrzuje
+}
+
 void RunAllQuestLoaderTests()
 {
     auto result1 = QuestLoader::CreateQuestFromTokens({});
@@ -47,6 +62,7 @@ void RunAllQuestLoaderTests()
     assert(result6 == nullptr);
 
     TestGatherPrintsCorrectName();
+    TestKillCompletion();
 
     std::cout << "Vsechny testy prosly!\n";
 }
