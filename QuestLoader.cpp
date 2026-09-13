@@ -38,11 +38,6 @@ std::vector<std::string> QuestLoader::SplitCSVLine(const std::string &line, char
 
 std::unique_ptr<QuestSystem> QuestLoader::CreateQuestFromTokens(const std::vector<std::string> &tokens)
 {
-    std::cerr << "DEBUG: pocet tokenu = " << tokens.size() << "\n";
-    for (size_t i = 0; i < tokens.size(); i++)
-    {
-        std::cerr << "  tokens[" << i << "] = '" << tokens[i] << "'\n";
-    }
     if (tokens.empty() || tokens.size() < 5)
     {
         return nullptr;
