@@ -55,9 +55,8 @@ std::unique_ptr<QuestSystem> QuestLoader::CreateQuestFromTokens(const std::vecto
         {
             bool mainQuest = (tokens[2] == "1");
             bool activeQuest = (tokens[3] == "1");
-            int sumDead = std::stoi(tokens[4]);
-            int placeholderSlayer = 0;
-            return std::make_unique<Kill>(tokens[1], mainQuest, activeQuest, sumDead, 0, placeholderSlayer);
+            int requiredKills = std::stoi(tokens[4]);
+            return std::make_unique<Kill>(tokens[1], mainQuest, activeQuest, requiredKills);
         }
         catch (const std::invalid_argument &)
         {
@@ -77,14 +76,13 @@ std::unique_ptr<QuestSystem> QuestLoader::CreateQuestFromTokens(const std::vecto
     }
     if (tokens[0] == "delivery")
     {
-        if (tokens.size() < 6)
+        if (tokens.size() < 5)
             return nullptr;
         try
         {
             bool mainQuest = (tokens[2] == "1");
             bool activeQuest = (tokens[3] == "1");
-            bool somethingToDeliver = (tokens[5] == "1");
-            return std::make_unique<Delivery>(tokens[1], mainQuest, activeQuest, tokens[4], somethingToDeliver);
+            return std::make_unique<Delivery>(tokens[1], mainQuest, activeQuest, tokens[4]);
         }
         catch (const std::invalid_argument &)
         {
@@ -93,17 +91,14 @@ std::unique_ptr<QuestSystem> QuestLoader::CreateQuestFromTokens(const std::vecto
     }
     if (tokens[0] == "gather")
     {
-        if (tokens.size() < 7)
+        if (tokens.size() < 6)
             return nullptr;
         try
         {
             bool mainQuest = (tokens[2] == "1");
             bool activeQuest = (tokens[3] == "1");
             int howMuchNeed = std::stoi(tokens[5]);
-            // todo Upravit - jde to na dluh!
-            int howMuchHave = std::stoi(tokens[6]);
-
-            return std::make_unique<Gather>(tokens[1], mainQuest, activeQuest, tokens[4], howMuchNeed, howMuchHave);
+            return std::make_unique<Gather>(tokens[1], mainQuest, activeQuest, tokens[4], howMuchNeed);
         }
         catch (const std::invalid_argument &)
         {

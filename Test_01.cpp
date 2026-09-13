@@ -3,7 +3,7 @@
 #include <cassert>
 #include <WinNls.h>
 #include <consoleapi2.h>
-#include "QuestLoader.h"
+#include "QuestLoader.h" 
 
 void TestCreateQuestFromTokens()
 {
@@ -26,7 +26,7 @@ void TestCreateQuestFromTokens()
     assert(resultX == nullptr);
 
     // test 5: moc ktrátké delivery quest:
-    auto result5 = QuestLoader::CreateQuestFromTokens({"delivery", "donáška pizzy", "", "", ""});
+    auto result5 = QuestLoader::CreateQuestFromTokens({"delivery", "donáška pizzy", "1",});
     assert(result5 == nullptr);
     // test 6: moc ktrátky gather quest:
     auto result6 = QuestLoader::CreateQuestFromTokens({"gather", "sezbírej mi....", "1", "1", "", "", ""});

@@ -25,7 +25,7 @@ public:
 				  << " | Is Complete? " << this->completed << "\n";
 	}
 
-	void QuestSystem::MarkCompleted();
-	bool QuestSystem::IsCompleted();
+	void MarkCompleted();
+	bool IsCompleted();
 	virtual ~QuestSystem() {};
 };
