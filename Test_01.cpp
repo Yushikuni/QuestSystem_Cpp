@@ -3,7 +3,30 @@
 #include <cassert>
 #include <WinNls.h>
 #include <consoleapi2.h>
-#include "QuestLoader.h" 
+//---
+#include <sstream>
+//---
+
+#include "QuestLoader.h"
+
+std::string CaptureOutput(QuestSystem *q)
+{
+    std::stringstream buffer;
+    std::streambuf *old = std::cout.rdbuf(buffer.rdbuf());
+    q->printQuestStatus();
+    std::cout.rdbuf(old);
+    return buffer.str();
+}
+
+void TestGatherPrintsCorrectName()
+{
+    auto quest = QuestLoader::CreateQuestFromTokens(
+        {"gather", "Sesbirej byliny", "0", "1", "hermanek", "1000"});
+    assert(quest != nullptr);
+
+    std::string output = CaptureOutput(quest.get());
+    assert(output.find("Sesbirej byliny") != std::string::npos);
+}
 
 void TestCreateQuestFromTokens()
 {
@@ -26,11 +49,17 @@ void TestCreateQuestFromTokens()
     assert(resultX == nullptr);
 
     // test 5: moc ktrátké delivery quest:
-    auto result5 = QuestLoader::CreateQuestFromTokens({"delivery", "donáška pizzy", "1",});
+    auto result5 = QuestLoader::CreateQuestFromTokens({
+        "delivery",
+        "donáška pizzy",
+        "1",
+    });
     assert(result5 == nullptr);
     // test 6: moc ktrátky gather quest:
     auto result6 = QuestLoader::CreateQuestFromTokens({"gather", "sezbírej mi....", "1", "1", "", "", ""});
     assert(result6 == nullptr);
+
+    TestGatherPrintsCorrectName();
 
     std::cout << "Vsechny testy prosly!\n";
 }
