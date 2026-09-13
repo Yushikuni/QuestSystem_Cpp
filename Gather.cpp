@@ -1,13 +1,19 @@
 #include "Gather.h"
-Gather::Gather(std::string typ, bool mainQuest, bool activeQuest, std::string nameThing, int howMuchNeed)
+Gather::Gather(std::string typ, bool mainQuest, bool activeQuest, std::string resourceName, int howMuchNeed) : QuestSystem(typ, mainQuest, activeQuest)
 {
-	this->s = typ;
-	this->mainQuest = mainQuest;
-	this->activeQuest = activeQuest;
-	this->nameThing = nameThing;
+	this->resourceName = resourceName;
 	this->howMuchNeed = howMuchNeed;
 }
-bool Gather::completeGather(bool howMuchDoYouHave, int howMuchNeed)
+bool Gather::CompleteGather()
 {
-	return (howMuchNeed == howMuchDoYouHave);
+	bool done = this->howMuchHave >= this->howMuchNeed;
+	if (done)
+	{
+		this->MarkCompleted();
+	}
+	return done;
+}
+void Gather::AddGathered(int amount)
+{
+	this->howMuchHave += amount;
 }

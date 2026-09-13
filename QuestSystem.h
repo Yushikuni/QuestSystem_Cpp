@@ -5,7 +5,7 @@
 class QuestSystem
 {
 protected:
-	std::string s;
+	std::string stringType;
 	bool mainQuest = false;
 	bool activeQuest = false;
 	bool completed = false;
@@ -19,10 +19,13 @@ public:
 	// Metoda pro výpis statusu
 	virtual void printQuestStatus()
 	{
-		std::cout << "Quest Status: type, " << this->s
+		std::cout << "Quest Status: type, " << this->stringType
 				  << " | Is Main Quest? " << this->mainQuest
 				  << " | Is Active Quest? " << this->activeQuest
 				  << " | Is Complete? " << this->completed << "\n";
 	}
+
+	void QuestSystem::MarkCompleted();
+	bool QuestSystem::IsCompleted();
 	virtual ~QuestSystem() {};
 };

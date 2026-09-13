@@ -4,15 +4,16 @@
 class Delivery : public QuestSystem
 {
 protected:
-	bool sthToDeliv = false;
-	std::string nameThing = "";
+	bool hasPackage = false;
+	std::string packageName = "";
 
 public:
 	// inicialization
 	Delivery() {};
-	Delivery(std::string typ, bool mainQuest, bool activeQuest, std::string nameThing, bool sthToDeliv);
+	Delivery(std::string typ, bool mainQuest, bool activeQuest, std::string packageName);
 	// destroy
 	~Delivery() {};
 	// delivery complete
-	bool CompleteDelivery(bool &sthToDeliv);
+	bool CompleteDelivery();
+	void PickUpPackage();
 };
