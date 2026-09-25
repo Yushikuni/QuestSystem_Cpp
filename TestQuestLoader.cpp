@@ -38,6 +38,17 @@ void TestKillCompletion()
     assert(quest.IsCompleted() == true);    // a base flag to potvrzuje
 }
 
+void TestGatherCompletion()
+{
+    Gather quest("Sesbírej mi pár bylinek", true, true, "Valštovičník", 2);
+    assert(quest.IsCompleted() == false);
+    quest.AddGathered(1);
+    assert(quest.IsCompleted() == false);
+    quest.AddGathered(1);
+    assert(quest.CompleteGather() == true);
+    assert(quest.IsCompleted() == true);
+}
+
 void RunAllQuestLoaderTests()
 {
     auto result1 = QuestLoader::CreateQuestFromTokens({});
@@ -64,5 +75,8 @@ void RunAllQuestLoaderTests()
     TestGatherPrintsCorrectName();
     TestKillCompletion();
 
-    std::cout << "Vsechny testy prosly!\n";
+    TestGatherCompletion();
+
+    std::cout
+        << "Vsechny testy prosly!\n";
 }
