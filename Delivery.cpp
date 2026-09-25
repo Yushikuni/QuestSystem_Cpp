@@ -10,7 +10,6 @@ bool Delivery::CompleteDelivery()
 	bool done = this->hasPackage;
 	if (done)
 	{
-		std::cout << "Packet was deliver to destination " << this->packageName << "\n";
 		this->MarkCompleted();
 	}
 	return done;

@@ -49,6 +49,24 @@ void TestGatherCompletion()
     assert(quest.IsCompleted() == true);
 }
 
+void TestDeliveryCompletiotion()
+{
+    Delivery quest("Dones balík", true, true, "Krabice");
+    assert(quest.IsCompleted() == false);
+    quest.PickUpPackage();
+    quest.CompleteDelivery();
+    assert(quest.CompleteDelivery());
+    assert(quest.IsCompleted() == true);
+}
+
+void TestEscortCompletiotion()
+{
+    Escort quest("Escort", true, true, true, "Gauč");
+    assert(quest.IsCompleted() == false);
+    quest.TravelEnd();
+    assert(quest.IsCompleted() == true);
+}
+
 void RunAllQuestLoaderTests()
 {
     auto result1 = QuestLoader::CreateQuestFromTokens({});
@@ -76,6 +94,8 @@ void RunAllQuestLoaderTests()
     TestKillCompletion();
 
     TestGatherCompletion();
+    TestDeliveryCompletiotion();
+    TestEscortCompletiotion();
 
     std::cout
         << "Vsechny testy prosly!\n";
