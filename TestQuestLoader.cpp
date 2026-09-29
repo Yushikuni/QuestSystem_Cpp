@@ -68,7 +68,7 @@ void TestEscortCompletion()
 
     Escort quest2("Escort", true, true, true, "Gauč");
     assert(quest2.IsCompleted() == false);
-   bool result2 = quest.TravelEnd();
+   bool result2 = quest2.TravelEnd();
     assert (result2 == true);
     assert(quest2.IsCompleted() == true);
 }
