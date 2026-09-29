@@ -65,6 +65,12 @@ void TestEscortCompletion()
    bool result = quest.TravelEnd();
     assert (result == false);
     assert(quest.IsCompleted() == false);
+
+    Escort quest2("Escort", true, true, true, "Gauč");
+    assert(quest2.IsCompleted() == false);
+   bool result2 = quest.TravelEnd();
+    assert (result2 == true);
+    assert(quest2.IsCompleted() == true);
 }
 
 void RunAllQuestLoaderTests()
