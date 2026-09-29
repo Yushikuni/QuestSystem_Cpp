@@ -49,22 +49,22 @@ void TestGatherCompletion()
     assert(quest.IsCompleted() == true);
 }
 
-void TestDeliveryCompletiotion()
+void TestDeliveryCompletion()
 {
     Delivery quest("Dones balík", true, true, "Krabice");
     assert(quest.IsCompleted() == false);
     quest.PickUpPackage();
-    quest.CompleteDelivery();
-    assert(quest.CompleteDelivery());
+    assert(quest.CompleteDelivery() == true);
     assert(quest.IsCompleted() == true);
 }
 
-void TestEscortCompletiotion()
+void TestEscortCompletion()
 {
-    Escort quest("Escort", true, true, true, "Gauč");
+    Escort quest("Escort", true, true, false, "Gauč");
     assert(quest.IsCompleted() == false);
-    quest.TravelEnd();
-    assert(quest.IsCompleted() == true);
+   bool result = quest.TravelEnd();
+    assert (result == false);
+    assert(quest.IsCompleted() == false);
 }
 
 void RunAllQuestLoaderTests()
@@ -94,8 +94,8 @@ void RunAllQuestLoaderTests()
     TestKillCompletion();
 
     TestGatherCompletion();
-    TestDeliveryCompletiotion();
-    TestEscortCompletiotion();
+    TestDeliveryCompletion();
+    TestEscortCompletion();
 
     std::cout
         << "Vsechny testy prosly!\n";
