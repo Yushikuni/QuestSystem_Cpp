@@ -1,14 +1,17 @@
-﻿// Test_01.cpp : Tento soubor obsahuje funkci main.
-//
-#include <WinNls.h>
-#include <consoleapi2.h>
+﻿#include <iostream>
+
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 #include "QuestLoader.h"
 #include "TestQuestLoader.h"
 
 int main()
 {
+#ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8);
-
+#endif
     RunAllQuestLoaderTests();
 
     std::cout << "--- QUEST SYSTEM START ---" << std::endl;
