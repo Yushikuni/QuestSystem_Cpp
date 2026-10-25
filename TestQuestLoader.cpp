@@ -1,8 +1,14 @@
+#include "Kill.h"
+#include "Delivery.h"
+#include "Escort.h"
+#include "Gather.h"
 #include "TestQuestLoader.h"
 #include "QuestLoader.h"
 #include <cassert>
-#include <sstream>
 #include <iostream>
+#include <sstream>
+#include <string>
+#include <assert.h>
 
 std::string CaptureOutput(QuestSystem *q)
 {
@@ -62,14 +68,14 @@ void TestEscortCompletion()
 {
     Escort quest("Escort", true, true, false, "Gauč");
     assert(quest.IsCompleted() == false);
-   bool result = quest.TravelEnd();
-    assert (result == false);
+    bool result = quest.TravelEnd();
+    assert(result == false);
     assert(quest.IsCompleted() == false);
 
     Escort quest2("Escort", true, true, true, "Gauč");
     assert(quest2.IsCompleted() == false);
-   bool result2 = quest2.TravelEnd();
-    assert (result2 == true);
+    bool result2 = quest2.TravelEnd();
+    assert(result2 == true);
     assert(quest2.IsCompleted() == true);
 }
 

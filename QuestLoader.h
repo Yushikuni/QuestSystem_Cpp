@@ -3,12 +3,6 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include <fstream>
-#include <sstream>
-#include "Kill.h"
-#include "Delivery.h"
-#include "Escort.h"
-#include "Gather.h"
 #include "QuestSystem.h"
 
 class QuestLoader
