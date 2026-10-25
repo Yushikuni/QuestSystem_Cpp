@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(QuestSystem_Cpp)
 
+configure_file(quests.csv ${CMAKE_BINARY_DIR}/quests.csv COPYONLY)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 

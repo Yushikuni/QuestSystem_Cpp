@@ -100,6 +100,16 @@ void RunAllQuestLoaderTests()
     assert(result5 == nullptr);
 
     auto result6 = QuestLoader::CreateQuestFromTokens({"gather", "sezbírej mi....", "1", "1", "", "", ""});
+
+    // číslo s hromadou za sebou
+    assert(QuestLoader::CreateQuestFromTokens({"kill", "zabij", "1", "1", "12abc"}) == nullptr);
+    // záporné číslo
+    assert(QuestLoader::CreateQuestFromTokens({"kill", "zabij", "1", "1", "-5"}) == nullptr);
+    // moc velké číslo (dřív shodilo program)
+    assert(QuestLoader::CreateQuestFromTokens({"kill", "zabij", "1", "1", "99999999999"}) == nullptr);
+    // kontrolní případ, platný řádek musí projít
+    assert(QuestLoader::CreateQuestFromTokens({"kill", "zabij", "1", "1", "10"}) != nullptr);
+
     assert(result6 == nullptr);
 
     TestGatherPrintsCorrectName();
