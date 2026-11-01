@@ -14,7 +14,6 @@ std::vector<std::unique_ptr<QuestSystem>> QuestLoader::LoadFromCSV(const std::st
     std::vector<std::unique_ptr<QuestSystem>> quests;
     std::ifstream file(path);
     std::string line;
-    std::ifstream file(path);
 
     if (!file.is_open())
     {
