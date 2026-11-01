@@ -8,8 +8,6 @@ protected:
 	int currentKills = 0;
 
 public:
-	Kill() {}; // Prázdné tělo přímo v hlavičce
-
 	// Parametrický konstruktor definovaný přímo zde:
 	Kill(std::string typ, bool mainQuest, bool activeQuest, int requiredKills);
 	~Kill() {};

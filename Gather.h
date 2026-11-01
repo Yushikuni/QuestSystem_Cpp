@@ -9,7 +9,6 @@ protected:
 
 public:
 	// inicializacition
-	Gather() {};
 	Gather(std::string typ, bool mainQuest, bool activeQuest, std::string resourceName, int howMuchNeed);
 
 	// destroyer

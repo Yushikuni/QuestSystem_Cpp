@@ -12,7 +12,7 @@ void QuestSystem::MarkCompleted()
 	this->completed = true;
 }
 
-bool QuestSystem::IsCompleted()
+bool QuestSystem::IsCompleted() const
 {
 	return this->completed;
 }

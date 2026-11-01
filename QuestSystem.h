@@ -17,7 +17,7 @@ public:
 	QuestSystem(std::string typ, bool mainQuest, bool activeQuest);
 
 	// Metoda pro výpis statusu
-	virtual void printQuestStatus()
+	virtual void printQuestStatus() const
 	{
 		std::cout << "Quest Status: type, " << this->stringType
 				  << " | Is Main Quest? " << this->mainQuest
@@ -26,6 +26,6 @@ public:
 	}
 
 	void MarkCompleted();
-	bool IsCompleted();
+	bool IsCompleted() const;
 	virtual ~QuestSystem() {};
 };
