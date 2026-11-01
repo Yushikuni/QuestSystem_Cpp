@@ -101,6 +101,9 @@ void RunAllQuestLoaderTests()
 
     auto result6 = QuestLoader::CreateQuestFromTokens({"gather", "sezbírej mi....", "1", "1", "", "", ""});
 
+    auto missing = QuestLoader::LoadFromCSV("neexistuje.csv");
+    assert(missing.empty());
+
     // číslo s hromadou za sebou
     assert(QuestLoader::CreateQuestFromTokens({"kill", "zabij", "1", "1", "12abc"}) == nullptr);
     // záporné číslo
@@ -119,6 +122,5 @@ void RunAllQuestLoaderTests()
     TestDeliveryCompletion();
     TestEscortCompletion();
 
-    std::cout
-        << "Vsechny testy prosly!\n";
+    std::cout << "Vsechny testy prosly!\n";
 }
