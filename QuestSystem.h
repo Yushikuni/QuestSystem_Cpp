@@ -5,6 +5,7 @@
 class QuestSystem
 {
 protected:
+	void MarkCompleted();
 	std::string stringType;
 	bool mainQuest = false;
 	bool activeQuest = false;
@@ -12,7 +13,6 @@ protected:
 
 public:
 	// inicialization with two metods, for E0291 solved problem, add QusetSystem();
-	QuestSystem() {};
 	// name of quest in string 0(zero) for side quest and unactive, 1(one) for main quest line and active
 	QuestSystem(std::string typ, bool mainQuest, bool activeQuest);
 
@@ -25,7 +25,6 @@ public:
 				  << " | Is Complete? " << this->completed << "\n";
 	}
 
-	void MarkCompleted();
 	bool IsCompleted() const;
 	virtual ~QuestSystem() {};
 };

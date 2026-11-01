@@ -21,7 +21,6 @@ int main()
     {
         q->printQuestStatus();
     }
-
     std::cout << "\n--- KONEC PROGRAMU ---" << std::endl;
     std::cin.get();
 

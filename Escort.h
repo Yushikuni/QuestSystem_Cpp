@@ -1,9 +1,9 @@
 #pragma once
 #include "QuestSystem.h"
 
-class Escort : public QuestSystem
+class Escort final : public QuestSystem
 {
-protected:
+private:
 	bool beginTravel = false;
 	std::string finalDestination = "";
 
