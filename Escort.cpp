@@ -6,7 +6,7 @@ Escort::Escort(std::string typ, bool mainQuest, bool activeQuest, bool beginTrav
 	this->finalDestination = finalDestination;
 }
 
-bool Escort::TravelEnd()
+bool Escort::CompleteQuest()
 {
 	bool done = this->beginTravel;
 	if (done)

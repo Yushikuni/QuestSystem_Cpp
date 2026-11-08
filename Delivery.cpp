@@ -5,7 +5,7 @@ Delivery::Delivery(std::string typ, bool mainQuest, bool activeQuest, std::strin
 	this->packageName = packageName;
 }
 
-bool Delivery::CompleteDelivery()
+bool Delivery::CompleteQuest()
 {
 	bool done = this->hasPackage;
 	if (done)

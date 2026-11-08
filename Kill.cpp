@@ -5,7 +5,11 @@ Kill::Kill(std::string typ, bool mainQuest, bool activeQuest, int requiredKills)
 	this->requiredKills = requiredKills;
 }
 
-bool Kill::CompleteSlayer()
+void Kill::AddKill()
+{
+	this->currentKills++;
+}
+bool Kill::CompleteQuest()
 {
 	bool done = (this->currentKills >= this->requiredKills);
 	if (done)
@@ -13,8 +17,4 @@ bool Kill::CompleteSlayer()
 		this->MarkCompleted();
 	}
 	return done;
-}
-void Kill::AddKill()
-{
-	this->currentKills++;
 }

@@ -37,13 +37,27 @@ void TestKillCompletion()
 
     quest.AddKill();
     quest.AddKill();
-    assert(quest.CompleteSlayer() == false); // 2 z 3, ještě ne
+    assert(quest.CompleteQuest() == false); // 2 z 3, ještě ne
 
     quest.AddKill();
-    assert(quest.CompleteSlayer() == true); // 3 z 3, hotovo
-    assert(quest.IsCompleted() == true);    // a base flag to potvrzuje
+    assert(quest.CompleteQuest() == true); // 3 z 3, hotovo
+    assert(quest.IsCompleted() == true);   // a base flag to potvrzuje
 }
 
+void TestCompleteQuests()
+{
+    Kill quest("Zabij krysy", true, true, 3);
+    QuestSystem &base = quest; // druhé jméno pro stejný objekt
+
+    assert(base.CompleteQuest() == false); // zatím nikdo nikoho nezabil
+
+    quest.AddKill(); // progress posouvám přes Kill
+    quest.AddKill();
+    quest.AddKill();
+
+    assert(base.CompleteQuest() == true); // 3 z 3
+    assert(base.IsCompleted() == true);
+}
 void TestGatherCompletion()
 {
     Gather quest("Sesbírej mi pár bylinek", true, true, "Valštovičník", 2);
@@ -51,7 +65,7 @@ void TestGatherCompletion()
     quest.AddGathered(1);
     assert(quest.IsCompleted() == false);
     quest.AddGathered(1);
-    assert(quest.CompleteGather() == true);
+    assert(quest.CompleteQuest() == true);
     assert(quest.IsCompleted() == true);
 }
 
@@ -60,7 +74,7 @@ void TestDeliveryCompletion()
     Delivery quest("Dones balík", true, true, "Krabice");
     assert(quest.IsCompleted() == false);
     quest.PickUpPackage();
-    assert(quest.CompleteDelivery() == true);
+    assert(quest.CompleteQuest() == true);
     assert(quest.IsCompleted() == true);
 }
 
@@ -68,13 +82,13 @@ void TestEscortCompletion()
 {
     Escort quest("Escort", true, true, false, "Gauč");
     assert(quest.IsCompleted() == false);
-    bool result = quest.TravelEnd();
+    bool result = quest.CompleteQuest();
     assert(result == false);
     assert(quest.IsCompleted() == false);
 
     Escort quest2("Escort", true, true, true, "Gauč");
     assert(quest2.IsCompleted() == false);
-    bool result2 = quest2.TravelEnd();
+    bool result2 = quest2.CompleteQuest();
     assert(result2 == true);
     assert(quest2.IsCompleted() == true);
 }
@@ -122,5 +136,6 @@ void RunAllQuestLoaderTests()
     TestDeliveryCompletion();
     TestEscortCompletion();
 
+    TestCompleteQuests();
     std::cout << "Vsechny testy prosly!\n";
 }

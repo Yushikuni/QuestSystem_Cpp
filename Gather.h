@@ -13,7 +13,6 @@ public:
 
 	// destroyer
 	~Gather() {};
-	// sum of something
-	bool CompleteGather();
+	bool CompleteQuest() override;
 	void AddGathered(int amount);
 };

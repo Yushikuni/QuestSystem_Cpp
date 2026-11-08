@@ -12,6 +12,6 @@ public:
 	Kill(std::string typ, bool mainQuest, bool activeQuest, int requiredKills);
 	~Kill() {};
 
-	bool CompleteSlayer();
+	bool CompleteQuest() override;
 	void AddKill();
 };

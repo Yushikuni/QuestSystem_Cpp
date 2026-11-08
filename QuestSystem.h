@@ -24,7 +24,7 @@ public:
 				  << " | Is Active Quest? " << this->activeQuest
 				  << " | Is Complete? " << this->completed << "\n";
 	}
-
+	virtual bool CompleteQuest() = 0;
 	bool IsCompleted() const;
 	virtual ~QuestSystem() {};
 };

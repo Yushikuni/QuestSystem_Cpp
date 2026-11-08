@@ -13,6 +13,6 @@ public:
 	// destroy
 	~Delivery() {};
 	// delivery complete
-	bool CompleteDelivery();
+	bool CompleteQuest() override;
 	void PickUpPackage();
 };

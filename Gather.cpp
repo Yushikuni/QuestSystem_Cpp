@@ -4,7 +4,7 @@ Gather::Gather(std::string typ, bool mainQuest, bool activeQuest, std::string re
 	this->resourceName = resourceName;
 	this->howMuchNeed = howMuchNeed;
 }
-bool Gather::CompleteGather()
+bool Gather::CompleteQuest()
 {
 	bool done = this->howMuchHave >= this->howMuchNeed;
 	if (done)
